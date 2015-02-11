@@ -168,7 +168,13 @@
 			if(!base.tieredList()) a += " class='" + base.depthClass(depth) + "'";
 			
 			// Finish building the link
-			a += ">" + base.options.levelText.replace('%', $(element).text()) + '</a>';
+      var linkText = $(element).text();
+      if ($.isFunction(base.options.levelText)){
+        linkText = base.options.levelText.call(base, linkText, depth);
+      } else {
+        linkText = base.options.levelText.replace('%', linkText);
+      }
+      a += ">" + linkText  + '</a>';
 			return a;
 		};
 		
