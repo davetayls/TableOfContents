@@ -309,8 +309,7 @@
 
     $.fn.tableOfContents = function(scope, options){
         return this.each(function(){
-            var toc = new $.TableOfContents(this, scope, options);
-			delete toc; // Free memory
+            new $.TableOfContents(this, scope, options);
         });
     };
 
